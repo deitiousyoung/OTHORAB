@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — OTHORAB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo">OTHO<span>RAB</span></a>
+    <div class="nav-cta">
+      <span style="font-size:0.85rem;color:var(--text-muted)">Admin Panel</span>
+      <button class="btn-outline" onclick="window.location.href='../index.html'">Logout</button>
+    </div>
+  </nav>
+
+  <section class="dashboard-section">
+    <div class="section-inner">
+
+      <!-- WELCOME -->
+      <div class="dash-welcome">
+        <div>
+          <h2>Admin <span class="accent">Dashboard</span> ⚙️</h2>
+          <p style="color:var(--text-muted)">Manage patients, appointments and site content.</p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="dash-stats">
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">👥</div>
+          <div>
+            <div class="dash-stat-num" id="totalPatients">0</div>
+            <div class="dash-stat-label">Total Patients</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">📅</div>
+          <div>
+            <div class="dash-stat-num" id="totalAppointments">0</div>
+            <div class="dash-stat-label">Appointments</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">⏳</div>
+          <div>
+            <div class="dash-stat-num" id="pendingAppointments">0</div>
+            <div class="dash-stat-label">Pending</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">✅</div>
+          <div>
+            <div class="dash-stat-num" id="confirmedAppointments">0</div>
+            <div class="dash-stat-label">Confirmed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="dash-grid">
+
+        <!-- APPOINTMENTS TABLE -->
+        <div class="dash-card" style="grid-column:span 2">
+          <h4>Recent Appointments</h4>
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Condition</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTable">
+                <tr>
+                  <td colspan="8" style="text-align:center;color:var(--text-muted);padding:2rem">
+                    No appointments yet. Will load from Supabase.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PATIENTS TABLE -->
+        <div class="dash-card" style="grid-column:span 2">
+          <h4>Registered Patients</h4>
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Joined</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="patientsTable">
+                <tr>
+                  <td colspan="5" style="text-align:center;color:var(--text-muted);padding:2rem">
+                    No patients yet. Will load from Supabase.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

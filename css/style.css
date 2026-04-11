@@ -454,3 +454,33 @@ footer {
   .dash-chat { grid-column: span 1; }
   .dash-welcome { flex-direction: column; }
 }
+/* ADMIN TABLE */
+.admin-table-wrapper {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.admin-table th {
+  background: var(--sky-light);
+  color: var(--sky-deeper);
+  font-weight: 600; padding: 0.8rem 1rem;
+  text-align: left; font-family: 'Syne', sans-serif;
+}
+.admin-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.admin-table tr:hover td { background: var(--off-white); }
+
+.status-btn {
+  padding: 0.3rem 0.8rem; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 600;
+  border: none; cursor: pointer;
+  background: var(--sky); color: white;
+  transition: all 0.2s;
+}
+.status-btn:hover { background: var(--sky-dark); }
