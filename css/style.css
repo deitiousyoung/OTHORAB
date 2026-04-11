@@ -291,3 +291,42 @@ footer {
   transition: gap 0.2s;
 }
 .card-link:hover { color: var(--sky); }
+/* AUTH */
+.auth-section {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #fff 0%, var(--sky-light) 100%);
+}
+
+.auth-card {
+  background: white; border-radius: 24px;
+  padding: 2.5rem; width: 100%; max-width: 440px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,191,255,0.08);
+}
+
+.auth-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.6rem;
+  color: var(--sky-dark); margin-bottom: 1.5rem;
+}
+.auth-logo span { color: var(--sky); }
+
+.auth-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.auth-sub {
+  font-size: 0.88rem; color: var(--text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.auth-switch {
+  text-align: center; margin-top: 1.5rem;
+  font-size: 0.85rem; color: var(--text-muted);
+}
+.auth-switch a { color: var(--sky-dark); font-weight: 600; text-decoration: none; }
+.auth-switch a:hover { color: var(--sky); }

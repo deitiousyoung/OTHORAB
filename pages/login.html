@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — OTHORAB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo">OTHO<span>RAB</span></a>
+    <ul class="nav-links">
+      <li><a href="conditions.html">Conditions</a></li>
+      <li><a href="devices.html">Devices</a></li>
+      <li><a href="appointments.html">Book</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-outline">Login</a>
+      <a href="signup.html" class="btn-primary">Get Started</a>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-card">
+      <div class="auth-logo">OTHO<span>RAB</span></div>
+      <h3>Welcome Back</h3>
+      <p class="auth-sub">Login to your patient account</p>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" placeholder="john@email.com"/>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••"/>
+      </div>
+
+      <button class="btn-primary btn-lg" style="width:100%;margin-top:0.5rem" onclick="handleLogin()">
+        Login
+      </button>
+
+      <div id="loginMsg" class="success-msg" style="display:none;"></div>
+
+      <p class="auth-switch">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
