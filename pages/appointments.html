@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment — OTHORAB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo">OTHO<span>RAB</span></a>
+    <ul class="nav-links">
+      <li><a href="conditions.html">Conditions</a></li>
+      <li><a href="devices.html">Devices</a></li>
+      <li><a href="appointments.html">Book</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-outline">Login</a>
+      <a href="signup.html" class="btn-primary">Get Started</a>
+    </div>
+  </nav>
+
+  <section class="conditions-hero">
+    <div class="section-inner">
+      <span class="section-tag">Get Started</span>
+      <h2>Book an Appointment</h2>
+      <p class="section-desc">Fill in your details and we'll get back to you as soon as possible to confirm your appointment.</p>
+    </div>
+  </section>
+
+  <section class="conditions-section">
+    <div class="section-inner">
+      <div class="form-wrapper">
+
+        <div class="form-card">
+          <h3>Your Details</h3>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="John Doe"/>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="john@email.com"/>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+1 234 567 8900"/>
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="25"/>
+          </div>
+
+          <div class="form-group">
+            <label>Condition</label>
+            <select id="condition">
+              <option value="">Select your condition</option>
+              <option>Flat Foot</option>
+              <option>Plantar Fasciitis</option>
+              <option>Clubfoot</option>
+              <option>Heel Spur</option>
+              <option>Achilles Tendinitis</option>
+              <option>Ankle Sprain</option>
+              <option>Bunion</option>
+              <option>Hammer Toe</option>
+              <option>Knee Osteoarthritis</option>
+              <option>ACL Injury</option>
+              <option>Knock Knee</option>
+              <option>Bow Legs</option>
+              <option>Scoliosis</option>
+              <option>Sciatica</option>
+              <option>Herniated Disc</option>
+              <option>Lower Back Pain</option>
+              <option>Cerebral Palsy</option>
+              <option>Stroke Rehabilitation</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" id="date"/>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Time</label>
+            <select id="time">
+              <option value="">Select time</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea id="notes" rows="4" placeholder="Describe your symptoms or any additional information..."></textarea>
+          </div>
+
+          <button class="btn-primary btn-lg" style="width:100%" onclick="submitAppointment()">
+            Book Appointment
+          </button>
+
+          <div id="successMsg" class="success-msg" style="display:none;">
+            ✅ Appointment request sent! We'll contact you shortly.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/YOURNUMBER" class="whatsapp-btn" target="_blank">💬</a>
+  <script src="../js/main.js"></script>
+</body>
+</html>

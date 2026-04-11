@@ -18,3 +18,18 @@ if (searchInput) {
     });
   });
 }
+// Appointment form
+function submitAppointment() {
+  const name = document.getElementById('fullName')?.value;
+  const email = document.getElementById('email')?.value;
+  const phone = document.getElementById('phone')?.value;
+  const condition = document.getElementById('condition')?.value;
+  const date = document.getElementById('date')?.value;
+
+  if (!name || !email || !phone || !condition || !date) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  document.getElementById('successMsg').style.display = 'block';
+}
