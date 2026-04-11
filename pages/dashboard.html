@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — OTHORAB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo">OTHO<span>RAB</span></a>
+    <ul class="nav-links">
+      <li><a href="conditions.html">Conditions</a></li>
+      <li><a href="devices.html">Devices</a></li>
+      <li><a href="appointments.html">Book</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn-outline" onclick="handleLogout()">Logout</button>
+    </div>
+  </nav>
+
+  <section class="dashboard-section">
+    <div class="section-inner">
+
+      <!-- WELCOME -->
+      <div class="dash-welcome">
+        <div>
+          <h2>Welcome back, <span class="accent" id="dashName">Patient</span> 👋</h2>
+          <p style="color:var(--text-muted)">Track your recovery and manage your appointments here.</p>
+        </div>
+        <a href="appointments.html" class="btn-primary">+ Book Appointment</a>
+      </div>
+
+      <!-- STATS -->
+      <div class="dash-stats">
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">📅</div>
+          <div>
+            <div class="dash-stat-num">3</div>
+            <div class="dash-stat-label">Appointments</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">📈</div>
+          <div>
+            <div class="dash-stat-num">75%</div>
+            <div class="dash-stat-label">Recovery Progress</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">🦾</div>
+          <div>
+            <div class="dash-stat-num">2</div>
+            <div class="dash-stat-label">Devices Assigned</div>
+          </div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon">💬</div>
+          <div>
+            <div class="dash-stat-num">12</div>
+            <div class="dash-stat-label">AI Chats</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="dash-grid">
+
+        <!-- APPOINTMENTS -->
+        <div class="dash-card">
+          <h4>Upcoming Appointments</h4>
+          <div class="appt-list">
+            <div class="appt-item">
+              <div class="appt-date">
+                <span class="appt-day">15</span>
+                <span class="appt-month">Jan</span>
+              </div>
+              <div class="appt-info">
+                <strong>Initial Assessment</strong>
+                <p>10:00 AM • Flat Foot</p>
+              </div>
+              <span class="appt-badge confirmed">Confirmed</span>
+            </div>
+            <div class="appt-item">
+              <div class="appt-date">
+                <span class="appt-day">22</span>
+                <span class="appt-month">Jan</span>
+              </div>
+              <div class="appt-info">
+                <strong>Device Fitting</strong>
+                <p>2:00 PM • Custom Orthotics</p>
+              </div>
+              <span class="appt-badge pending">Pending</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="dash-card">
+          <h4>Recovery Progress</h4>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Pain Reduction</span>
+                <span>80%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Mobility</span>
+                <span>65%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Strength</span>
+                <span>70%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Overall Recovery</span>
+                <span>75%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI CHAT -->
+        <div class="dash-card dash-chat">
+          <h4>AI Assistant</h4>
+          <div class="chat-box" id="chatBox">
+            <div class="chat-bubble bot">👋 Hi! I'm your OTHORAB AI assistant. Ask me anything about your condition, devices or recovery!</div>
+          </div>
+          <div class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Ask a question..."/>
+            <button class="btn-primary" onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+
+        <!-- MY DEVICES -->
+        <div class="dash-card">
+          <h4>My Devices</h4>
+          <div class="device-list">
+            <div class="device-item">
+              <div class="device-item-icon">👟</div>
+              <div>
+                <strong>Custom Orthotics</strong>
+                <p>Assigned • Jan 10, 2025</p>
+              </div>
+            </div>
+            <div class="device-item">
+              <div class="device-item-icon">🦵</div>
+              <div>
+                <strong>Ankle Foot Orthosis</strong>
+                <p>Assigned • Jan 10, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/YOURNUMBER" class="whatsapp-btn" target="_blank">💬</a>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
