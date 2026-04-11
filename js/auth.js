@@ -1,24 +1,8 @@
-// We'll connect Supabase here later
-function handleLogin() {
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-  const msg = document.getElementById('loginMsg');
+const SUPABASE_URL = 'https://hfjcdkmpyldlvxweknci.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmamNka21weWxkbHZ4d2VrbmNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MTEwMTYsImV4cCI6MjA5MTQ4NzAxNn0.NpdwMuolCMME_hGYLMcav1POow6YmurLmn9Bt7_wN4M';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  if (!email || !password) {
-    msg.style.display = 'block';
-    msg.textContent = '⚠️ Please fill in all fields.';
-    msg.style.background = '#ffe0e0';
-    msg.style.color = '#cc0000';
-    return;
-  }
-
-  msg.style.display = 'block';
-  msg.textContent = '⏳ Logging in...';
-  msg.style.background = 'var(--sky-light)';
-  msg.style.color = 'var(--sky-deeper)';
-}
-
-function handleSignup() {
+async function handleSignup() {
   const name = document.getElementById('signupName').value;
   const email = document.getElementById('signupEmail').value;
   const phone = document.getElementById('signupPhone').value;
@@ -27,23 +11,54 @@ function handleSignup() {
   const msg = document.getElementById('signupMsg');
 
   if (!name || !email || !phone || !password || !confirm) {
-    msg.style.display = 'block';
-    msg.textContent = '⚠️ Please fill in all fields.';
-    msg.style.background = '#ffe0e0';
-    msg.style.color = '#cc0000';
-    return;
+    showMsg(msg, '⚠️ Please fill in all fields.', 'error'); return;
   }
-
   if (password !== confirm) {
-    msg.style.display = 'block';
-    msg.textContent = '⚠️ Passwords do not match.';
-    msg.style.background = '#ffe0e0';
-    msg.style.color = '#cc0000';
-    return;
+    showMsg(msg, '⚠️ Passwords do not match.', 'error'); return;
   }
 
-  msg.style.display = 'block';
-  msg.textContent = '⏳ Creating account...';
-  msg.style.background = 'var(--sky-light)';
-  msg.style.color = 'var(--sky-deeper)';
+  showMsg(msg, '⏳ Creating account...', 'info');
+
+  const { data, error } = await sb.auth.signUp({ email, password });
+  if (error) { showMsg(msg, '❌ ' + error.message, 'error'); return; }
+
+  await sb.from('patients').insert({ name, email, phone });
+  showMsg(msg, '✅ Account created! Check your email to confirm.', 'success');
+}
+
+async function handleLogin() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  const msg = document.getElementById('loginMsg');
+
+  if (!email || !password) {
+    showMsg(msg, '⚠️ Please fill in all fields.', 'error'); return;
+  }
+
+  showMsg(msg, '⏳ Logging in...', 'info');
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) { showMsg(msg, '❌ ' + error.message, 'error'); return; }
+
+  window.location.href = 'dashboard.html';
+}
+
+async function handleLogout() {
+  await sb.auth.signOut();
+  window.location.href = '../index.html';
+}
+
+function showMsg(el, text, type) {
+  el.style.display = 'block';
+  el.textContent = text;
+  if (type === 'error') {
+    el.style.background = '#ffe0e0';
+    el.style.color = '#cc0000';
+  } else if (type === 'success') {
+    el.style.background = '#e0fff0';
+    el.style.color = '#00aa55';
+  } else {
+    el.style.background = 'var(--sky-light)';
+    el.style.color = 'var(--sky-deeper)';
+  }
 }
