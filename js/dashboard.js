@@ -64,11 +64,30 @@ async function sendMessage() {
   chatBox.appendChild(loadingBubble);
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  // Gemini coming next!
-  setTimeout(() => {
-    loadingBubble.textContent = '🤖 AI coming soon! Contact us on WhatsApp for now.';
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }, 1000);
+ try {
+    const response = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBIT5Drd2kxyoMT536MufX5OPfeeUhzBHA',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: `You are OTHORAB's AI assistant specializing in orthopedic rehabilitation. 
+              Answer questions about conditions, devices and recovery. 
+              Be friendly, professional and concise.
+              Patient question: ${message}`
+            }]
+          }]
+        })
+      }
+    );
+    const data = await response.json();
+    loadingBubble.textContent = data.candidates[0].content.parts[0].text;
+  } catch (err) {
+    loadingBubble.textContent = '❌ AI unavailable. Please contact us on WhatsApp.';
+  }
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 document.getElementById('chatInput')?.addEventListener('keypress', function(e) {
